@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}HR App{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+    table {
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 2px 5px;
+        font-size: 15px;
+        line-height: 1.25;
+        vertical-align: middle;
+        white-space: normal;
+        word-break: break-word;
+    }
+    th {
+        background: #f5f5f5;
+    }
+    .see-more-link {
+        color: #2460a7;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    /* Compact columns */
+    td.col-id, td.col-age, td.col-resume {
+        width: 38px !important;
+        min-width: 36px !important;
+        max-width: 44px !important;
+        text-align: center;
+        font-size: 13px;
+        font-weight: normal;
+        padding: 1px 2px;
+    }
+    th, td {
+    text-align: justify;
+    /* other styles... */
+}
+
+    td.col-resume { width: 90px !important; }
+    tr:hover { background: #f9f9f9; }
+    </style>
+</head>
+<body class="p-4">
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <script>
+    function toggleMore(id, link) {
+        var elem = document.getElementById(id);
+        if (elem.style.display === 'none') {
+            elem.style.display = '';
+            link.textContent = 'See less';
+        } else {
+            elem.style.display = 'none';
+            link.textContent = 'See more';
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% macro see_more_numbered(content, max_items, id_prefix) %}
+    {% set items = content.split(';') %}
+    {% for item in items[:max_items] %}
+        <span>{{ loop.index }}. {{ item.strip() }}</span>{% if not loop.last %}<br>{% endif %}
+    {% endfor %}
+    {% if items|length > max_items %}
+        <span id="{{ id_prefix }}" style="display:none;">
+            {% for item in items[max_items:] %}
+                <br><span>{{ max_items + loop.index }}. {{ item.strip() }}</span>
+            {% endfor %}
+        </span>
+        <a href="javascript:void(0);" class="see-more-link" onclick="toggleMore('{{ id_prefix }}', this)">See more</a>
+    {% endif %}
+{% endmacro %}

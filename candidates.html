@@ -1,0 +1,53 @@
+{% import 'macros.html' as macros %}
+{% extends 'base.html' %}
+{% block title %}Candidates{% endblock %}
+{% block content %}
+<h2>Candidate List</h2>
+<a class="btn btn-success mb-3" href="/upload_resumes">Upload More Resumes</a>
+<table class="table table-bordered">
+    <colgroup>
+        <col style="width:38px">
+        <col style="width:200px;">
+        <col style="width:46px">
+        <col style="width: 220px">
+        <col style="width: 115px;;">
+        <col>
+        <col style="width: 200px;">
+        <col style="width:90px">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Experience</th>
+            <th>Skills</th>
+            <th>Resume</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in candidates %}
+    <tr>
+        <td class="col-id">{{ c[0] }}</td>
+        <td>{{ c[1] }}</td>
+        <td class="col-age">{{ c[2] }}</td>
+        <td>{{ c[3] }}</td>
+        <td>{{ c[4] }}</td>
+        <td>
+            {{ macros.see_more_numbered(c[5], 2, 'exp-' ~ c[0]) }}
+        </td>
+        <td>
+            {{ macros.see_more_numbered(c[6], 3, 'skills-' ~ c[0]) }}
+        </td>
+        <td class="col-resume">
+            <a href="/download_resume/{{ c[7] }}" target="_blank">Download</a>
+        </td>
+        
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="/" class="btn btn-secondary">Back to Home</a>
+{% endblock %}

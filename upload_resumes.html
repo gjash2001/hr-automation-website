@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Upload Resumes{% endblock %}
+{% block content %}
+<h2>Upload Resumes (PDF or DOCX)</h2>
+<form action="/upload_resumes" method="post" enctype="multipart/form-data">
+    <input type="file" name="resumes" multiple accept=".pdf,.docx" class="form-control mb-2">
+    <button type="submit" class="btn btn-primary">Upload & Parse</button>
+</form>
+<a href="/" class="btn btn-secondary mt-2">Back to Home</a>
+{% endblock %}
